@@ -1,7 +1,9 @@
+
+
 import { useEffect, useState } from "react";
-import Web3 from "web3";
+import Web3 from 'web3';
 import detectEthereumProvider from "@metamask/detect-provider";
-import  {loadContract} from "./utils/loadContract";
+import { loadContract } from "./utils/loadContract";
 
 function App() {
 
@@ -16,10 +18,10 @@ function App() {
   useEffect(function(){
     const loadProvider = async function() {
       const provider = await detectEthereumProvider();
-      
+
       if (provider) {
         // console.log('provider', provider)
-        // let accounts = await provider.request({method: 'eth_requestAccounts'});
+        // provider.request({method: 'eth_requestAccounts'});
         // console.log('acount', accounts)
         setWeb3Api({
           web3: new Web3(provider),
@@ -54,16 +56,16 @@ function App() {
           <button type="button" className="btn btn-danger mx-2"><h3>WithDraw</h3></button>
           <button type="button" className="btn btn-success"
             onClick={()=>{
-              web3Api.provider.request({method: "eth_requestAccounts"});
+              web3Api.provider.request({method: 'eth_requestAccounts'});
             }}
           ><h3>Connect wallet</h3></button>
-          <p style={{fontSize: "32px"}}><strong>Address: </strong>{
-            account?account:"You don't login"
+          <p style={{ fontSize: "32px" }}><strong>Address: </strong>{
+            account ? account : "You don't login"
           }</p>
         </div>
       </div>
     </div>
-  ); 
+  );
 }
 
 export default App;
